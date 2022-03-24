@@ -1,20 +1,26 @@
-import React, { lazy } from "react";
+import React, { lazy } from 'react';
 
-const Navbar = lazy(() => import("app2/Navbar"));
-const Footer = lazy(() => import("app2/Footer"));
+const Navbar = lazy(() => import('app2/Navbar'));
+const Footer = lazy(() => import('app2/Footer'));
+
+import './style.css';
 
 function App() {
-    return (
-        <div>
-            <React.Suspense fallback={null}>
-                <Navbar/>
-            </React.Suspense>
-            Hello Microfrontend
-            <React.Suspense fallback={null}>
-                <Footer/>
-            </React.Suspense>
+  return (
+    <div className="wrap">
+      <React.Suspense fallback="Loading..">
+        <div className="navbar">
+          <Navbar />
         </div>
-    );
+      </React.Suspense>
+      <div className="container">Hello Microfrontend</div>
+      <React.Suspense fallback="Loading..">
+        <div className="footer">
+          <Footer />
+        </div>
+      </React.Suspense>
+    </div>
+  );
 }
 
 export default App;
